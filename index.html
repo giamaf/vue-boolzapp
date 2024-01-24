@@ -35,31 +35,39 @@
 
 <body>
     <div id="root">
-        <div class="container-fluid px-5 py-4">
+        <div class="main-box container-fluid">
             <main>
                 <!-- Main Left-->
                 <div class="main-left col-3">
 
                     <!-- Navbar -->
-                    <nav class="navbar px-3 bg-color-grey">
+                    <nav class="navbar px-xxl-3 bg-color-grey">
                         <div class="nav-left">
-                            <img src="img/avatar_io.jpg" class="rounded-circle" alt="my-avatar">
+                            <ul class="d-flex align-items-center gap-1">
+                                <li>
+                                    <a href="#"><img :src="`img/avatar${data.user.avatar}.jpg`" class="rounded-circle"
+                                            :alt="data.user.name"></a>
+                                </li>
+                                <li>
+                                    <h6><small><a href="#">{{data.user.name}}</a></small></h6>
+                                </li>
+                            </ul>
                         </div>
                         <div class="nav-right">
-                            <ul class="d-flex gap-lg-4">
+                            <ul class="d-flex gap-3 gap-lg-4">
                                 <li>
-                                    <a class="d-none d-xl-inline-block" href="#"><i class="fa-solid fa-users"></i></a>
+                                    <a class="d-none d-xxl-inline-block" href="#"><i class="fa-solid fa-users"></i></a>
                                 </li>
                                 <li>
                                     <a class="d-none d-xl-inline-block" href="#"><i
                                             class="fa-solid fa-circle-notch"></i></a>
                                 </li>
                                 <li>
-                                    <a class="d-none d-xl-inline-block" href="#"><i
+                                    <a class="d-none d-md-inline-block" href="#"><i
                                             class="fa-regular fa-comment-dots"></i></a>
                                 </li>
                                 <li>
-                                    <a class="d-none d-xl-inline-block" href="#"><i
+                                    <a class="d-none d-sm-inline-block" href="#"><i
                                             class="fa-solid fa-circle-plus"></i></a>
                                 </li>
                                 <li>
@@ -69,12 +77,12 @@
                         </div>
                     </nav>
 
+                    <!-- Search section -->
                     <div class="container">
 
-                        <!-- Search section -->
-                        <section class="search d-flex align-items-center my-2">
-                            <form class="form-search me-2" role="search">
-                                <i class="fa-solid fa-magnifying-glass"></i>
+                        <section class="search d-flex align-items-center my-2 gap-2">
+                            <form class="form-search" role="search">
+                                <i class="fa-solid fa-magnifying-glass my-position"></i>
                                 <input class="bg-color-grey form-control" type="search"
                                     placeholder="Cerca o inzia una nuova chat">
                             </form>
@@ -83,12 +91,12 @@
                     </div>
 
                     <!-- Notifications alert section -->
-                    <section class="notifications-alert py-3 bg-color-azure pe-2">
+                    <section class="notifications-alert py-3 pe-2 bg-color-azure">
                         <div class="container d-flex align-items-center justify-content-between gap-3">
                             <div class="left">
                                 <a class="notifications-bell" href="#"><i class="fa-solid fa-bell-slash"></i></a>
                             </div>
-                            <div class="center">
+                            <div class="center flex-grow-1">
                                 <h6>Attiva notifiche</h6>
                                 <p><small>Ricevi notifiche relative ai nuovi messaggi sul
                                         computer.</small>
@@ -101,12 +109,228 @@
                         </div>
                     </section>
 
+                    <!-- Chat-list section-->
+                    <section class="chat-list py-2 pe-2 h-100">
+                        <div v-for="contact in data.contacts"
+                            class="container d-flex align-items-center justify-content-between gap-3 mb-2 py-2">
+                            <div class="left">
+                                <a href="#"> <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name"></a>
+                            </div>
+                            <div class="center flex-grow-1">
+                                <h6>{{contact.name}}</h6>
+                                <p><small>Messaggio</small>
+                                </p>
+                            </div>
+                            <div class="right">
+                                <ul class="d-flex flex-column align-items-center">
+                                    <li>
+                                        <p class="data-style"><small>Data</small></p>
+                                    </li>
+                                    <li>
+                                        <p class="d-flex justify-content-center align-items-center message-number m-0">
+                                            <a href="#">7</a>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
                 </div>
 
-                <!-- Main Right-->
-                <div class="main-right col-9">
-                    <nav class="bg-color-grey"></nav>
-                </div>
+                <!!-- Main Right-->
+                    <div class="main-right col-9">
+
+                        <!!-- Navbar-top -->
+                            <nav class="navbar px-3 bg-color-grey">
+                                <div class="nav-left flex-grow-1">
+                                    <ul class="d-flex align-items-center gap-1">
+                                        <li>
+                                            <a href="#"><img src="img/avatar_io.jpg" class="rounded-circle"
+                                                    alt="my-avatar"></a>
+                                        </li>
+                                        <li>
+                                            <h6><small>Nome Cognome</small></h6>
+                                            <p><small>Ultimo accesso alle</small></p>
+                                        </li>
+                                    </ul>
+                                    </a>
+                                </div>
+                                <div class="nav-right">
+                                    <ul class="d-flex gap-lg-4">
+                                        <li>
+                                            <a class="d-none d-xl-inline-block" href="#"> <i
+                                                    class="fa-solid fa-magnifying-glass"></i></a>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="bi bi-three-dots-vertical"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+
+                            <!!-- Chat-box section -->
+                                <section class="chat-box">
+                                    <ul>
+                                        <li class="text-start mb-3">
+                                            <span role="button" class="message received d-inline-block">Ciao
+                                                <span class="tail received"></span>
+                                            </span>
+                                        </li>
+                                        <li class="text-end mb-3">
+                                            <span role="button" class="message send d-inline-block">Come va?
+                                                <span class="tail send"></span>
+                                            </span>
+
+                                        </li>
+                                        <li class="text-start mb-3">
+                                            <span role="button" class="message received d-inline-block">Lorem ipsum
+                                                dolor sit amet,
+                                                consectetur adipisicing elit. Quod molestiae nihil velit odio facilis?
+                                                Provident quas natus ab, nam consectetur laudantium vitae, minus
+                                                voluptatem perferendis quo nobis suscipit hic itaque?
+                                                Velit, atque ex, temporibus, nemo beatae asperiores cupiditate expedita
+                                                earum quam delectus ipsum dolorum porro quaerat odio repudiandae
+                                                maiores. Est harum alias excepturi sequi ea saepe optio facilis officiis
+                                                dignissimos.
+                                                Vel soluta quo ut facilis dolores, error minus quis id. Animi ab,
+                                                dolorem numquam unde distinctio sint mollitia vel omnis reiciendis,
+                                                reprehenderit sapiente nisi tempore inventore, rem modi. Soluta,
+                                                eveniet.
+                                                Sapiente unde iusto, tempora ullam fuga quia quibusdam rerum fugit
+                                                provident optio autem ea ratione blanditiis beatae rem deserunt
+                                                dignissimos ad facere dolores accusantium culpa. At excepturi hic
+                                                asperiores iure?
+                                                Esse, suscipit numquam. Odit consequatur quam minus sint autem illum
+                                                dolor iure, illo, tenetur, ipsam ut dolores. Officia sunt necessitatibus
+                                                unde repudiandae voluptatibus sapiente possimus, assumenda non
+                                                consequuntur. Voluptatem, fuga!
+                                                Vitae totam repellendus facilis vero cupiditate labore accusamus
+                                                deserunt quod, molestiae pariatur excepturi ipsa obcaecati, saepe, ut
+                                                delectus. Impedit quaerat incidunt, voluptatem iure autem optio velit
+                                                enim inventore esse voluptatibus!
+                                                Eius neque earum tempora aliquam placeat impedit commodi dolor alias
+                                                voluptates doloribus, adipisci voluptate. Animi explicabo quasi beatae
+                                                ratione non fuga voluptatem nihil cumque, dicta fugit! Laborum quae quo
+                                                ipsam?
+                                                Provident laborum, officiis labore doloribus, nemo maxime sed soluta
+                                                eveniet veniam inventore quidem qui accusantium error dolorum ut,
+                                                nesciunt corrupti beatae. Molestiae ut ipsum sequi placeat voluptatum
+                                                dolorum animi obcaecati.
+                                                Doloremque voluptas fugiat accusamus aliquid, cumque nemo necessitatibus
+                                                consectetur fugit consequuntur id veniam temporibus, saepe vel, iste
+                                                quis eum assumenda deserunt officia eius earum esse odit! Aut minus
+                                                voluptate esse.
+                                                Quas rerum voluptate nemo tempore architecto officia suscipit accusamus
+                                                commodi vero aperiam ipsum temporibus doloribus, pariatur quis nobis
+                                                minima tempora assumenda veritatis eligendi excepturi iure dolores odio
+                                                nisi. Illo, optio.
+                                                A sit qui id odit veritatis sunt ipsa perferendis eveniet. Tempore eos
+                                                incidunt id, unde dolores dicta inventore veniam quo officiis quibusdam
+                                                excepturi sapiente illum! A est dolorem aspernatur voluptas.
+                                                Cupiditate repellendus minus perferendis repudiandae, obcaecati
+                                                voluptatum voluptates fuga reprehenderit quae quod fugit dolorum, fugiat
+                                                dolore. Eum velit, minus delectus explicabo aut officia porro quidem
+                                                exercitationem distinctio reiciendis inventore voluptatem.
+                                                Nihil ab ipsa temporibus, culpa odit saepe doloribus quaerat laboriosam
+                                                inventore veritatis quis! Quibusdam voluptate, pariatur sequi hic,
+                                                exercitationem delectus magnam error iure sapiente cumque, dolores
+                                                laborum blanditiis quas rem!
+                                                Voluptatem velit sapiente, rem minus itaque consequuntur perferendis non
+                                                labore neque optio, quia quidem? Iusto quae ad, quas deleniti molestias
+                                                eius et ea, nesciunt neque ex possimus modi pariatur dignissimos!
+                                                Veritatis non quia quibusdam rem maxime ad aspernatur debitis.
+                                                Asperiores quas, molestiae quisquam, laborum soluta accusamus repellat
+                                                eum, aspernatur quia ab dolore dolores tempore eveniet quasi? Ea, quos
+                                                quo! Fugiat.
+                                                Inventore dicta voluptas iure, velit aut ipsum voluptatibus aspernatur
+                                                repellat, ut eaque eveniet necessitatibus unde enim omnis odio assumenda
+                                                exercitationem, nesciunt repellendus. Facilis voluptas asperiores vero!
+                                                Quisquam facere numquam aspernatur!
+                                                Mollitia molestias harum veniam suscipit eum ex distinctio culpa modi
+                                                fuga, natus libero minus? Ex repellendus est culpa quaerat tenetur
+                                                cumque praesentium porro, hic explicabo cum aut, accusantium ea
+                                                corporis?
+                                                Cum ipsam earum nesciunt consectetur. Distinctio dolorum reprehenderit
+                                                nihil, accusantium veritatis corrupti dolore adipisci asperiores nobis
+                                                libero fuga quam temporibus alias excepturi aliquid a nulla modi harum
+                                                quidem ex quis!
+                                                Sint repudiandae porro quibusdam nisi velit. Iure obcaecati perferendis
+                                                eaque ratione qui beatae consectetur repellendus reprehenderit quam
+                                                dolorem corporis, veniam at! Obcaecati assumenda temporibus quae modi
+                                                accusamus, aperiam velit sint.
+                                                Adipisci aliquid mollitia architecto quia doloribus modi molestias
+                                                porro! Est, ullam at ducimus nemo natus vitae voluptatibus numquam nihil
+                                                laborum? Debitis corporis repellendus fugiat possimus blanditiis commodi
+                                                veritatis ducimus quaerat.
+                                                Earum unde modi aliquid corporis voluptatum aspernatur architecto
+                                                assumenda delectus obcaecati, magni eveniet accusantium quia eum
+                                                corrupti fuga temporibus rem repudiandae sapiente, mollitia doloremque
+                                                ipsum nesciunt expedita officia. Molestias, natus!
+                                                Quod excepturi laborum quasi perferendis, dignissimos nobis mollitia
+                                                reiciendis aut iste rem praesentium at odio blanditiis assumenda
+                                                exercitationem architecto amet officia illo cumque, placeat aspernatur
+                                                quas libero? Dolorem, cupiditate ducimus.
+                                                Eos quisquam fuga maxime deserunt quam vero, dicta sunt voluptas
+                                                officiis atque soluta aliquam quis hic molestiae a ab. Magni veritatis
+                                                necessitatibus facilis quia quaerat tempora animi ab nulla possimus.
+                                                Recusandae rerum consectetur, repellendus voluptas consequuntur animi
+                                                laborum omnis? Vel quam sed doloremque placeat aperiam, iste dolorem
+                                                asperiores maiores necessitatibus sequi dolor qui porro possimus amet.
+                                                Earum illo ipsa atque!
+                                                Eius odit, autem, et reiciendis illo esse voluptates iste repellendus
+                                                voluptas accusamus nostrum? Ipsa ullam recusandae perspiciatis itaque
+                                                veniam, nobis minus? Distinctio non voluptatem nihil nulla cupiditate
+                                                delectus sequi cum.
+                                                Ea dolorum excepturi reiciendis, atque non illo dolores perspiciatis sit
+                                                id distinctio, accusantium maxime architecto recusandae voluptatum ut
+                                                quo corporis nisi doloremque sed ratione, tenetur rerum cum! Fugiat,
+                                                minima laudantium.
+                                                Magnam distinctio animi cum autem ex explicabo. Dolore corporis ullam
+                                                voluptates asperiores voluptatum! Quo culpa ipsam provident mollitia
+                                                enim beatae, a veritatis obcaecati esse debitis. Sapiente officiis
+                                                perferendis consequatur aliquam!
+                                                Nostrum at totam tempore sunt provident sit modi sequi suscipit
+                                                praesentium quia vitae, distinctio officiis culpa impedit, dolore
+                                                voluptas? Minus eum blanditiis illo repellat nemo perspiciatis,
+                                                praesentium nam quos aspernatur.
+                                                Tempora sequi officia possimus, consequuntur harum saepe. Cupiditate
+                                                dignissimos rerum praesentium molestias ducimus magnam porro fugiat
+                                                provident, magni neque est ad suscipit maiores, quae illum ratione
+                                                necessitatibus ipsum. Nisi, qui.
+                                                Obcaecati dolores aliquam repudiandae velit, omnis ipsa magnam sit non
+                                                numquam fuga quod quas totam, libero architecto. Repellat vero ratione
+                                                at rerum nesciunt! Repudiandae mollitia voluptas nostrum in ipsa
+                                                nam.
+                                                <span class="tail received"></span>
+                                            </span>
+                                        </li>
+                                    </ul>
+
+                                </section>
+
+                                <!!-- Navbar-bottom -->
+                                    <nav class="navbar bottom bg-color-grey px-3">
+                                        <div class="left">
+                                            <ul class="d-flex gap-2">
+                                                <li>
+                                                    <a href="#"><i class="fa-regular fa-face-grin"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="@"><i class="fa-solid fa-plus"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="center flex-grow-1 mx-3">
+                                            <form class="form-message" role="search">
+                                                <input class="form-control" type="search"
+                                                    placeholder="Scrivi un messaggio">
+                                            </form>
+                                        </div>
+                                        <div class="right">
+                                            <a href="#"><i class="fa-solid fa-microphone"></i></a>
+                                        </div>
+                                    </nav>
+                    </div>
 
             </main>
         </div>

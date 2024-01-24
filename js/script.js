@@ -8,7 +8,7 @@ const myApp = createApp({
 
     // * Dati
     data: () => ({
-        data
+        data: data,
     })
 })
 
