@@ -1,6 +1,20 @@
 /* CSS Reset */
-/* * {
+* {
     Margin: 0;
     Padding: 0;
     Box-sizing: border-box;
-} */
+}
+
+/* Body & Main */
+body {
+    background-image: url(../img/sfondo_1920x1080.jpg);
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+
+main {
+    width: 100%;
+    height: calc(100vh - 3rem);
+    border-radius: 10px;
+    display: flex;
+}
