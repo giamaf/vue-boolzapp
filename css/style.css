@@ -5,12 +5,6 @@
     Box-sizing: border-box;
 }
 
-/* # Utils */
-.bg-color-grey {
-    background-color: whitesmoke;
-}
-
-
 /* # Generics */
 img {
     max-width: 100%;
@@ -24,6 +18,15 @@ ul {
 
 i {
     color: rgba(0, 0, 0, 0.7);
+}
+
+/* # Utils */
+.bg-color-grey {
+    background-color: rgb(250, 250, 250);
+}
+
+.bg-color-azure {
+    background-color: rgb(112, 187, 230);
 }
 
 /* Body & Main */
@@ -45,7 +48,6 @@ main {
 .main-left nav,
 .main-right nav {
     height: 60px;
-    background-color: whitesmoke;
 }
 
 /* * --------------------------------------
@@ -62,13 +64,7 @@ main {
     height: 30px;
 }
 
-
 /* * Search section */
-section.search {
-    display: flex;
-    align-items: center;
-}
-
 .form-search {
     position: relative;
     flex-grow: 1;
@@ -81,12 +77,25 @@ section.search {
 }
 
 .form-search input {
-    padding-left: 2rem;
+    padding-left: 3rem;
     font-size: 0.9rem;
 }
 
 .bi.bi-filter {
     font-size: 1.5rem;
+}
+
+/* * Notifications alert section */
+.notifications-bell {
+    background-color: white;
+    border: 10px solid white;
+    border-radius: 50%;
+}
+
+.notifications-alert .center h6,
+p {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
 }
 
 /***** EFFECTS *****/
