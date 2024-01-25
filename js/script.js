@@ -1,5 +1,6 @@
-console.log('JS OK');
 console.log('Vue OK', Vue);
+
+const { user, contacts } = data;
 
 const { createApp } = Vue;
 
@@ -8,8 +9,23 @@ const myApp = createApp({
 
     // * Dati
     data: () => ({
-        data: data,
-    })
+        user,
+        contacts,
+        currentId: 1,
+    }),
+
+    computed: {
+
+        // # Recupero l'id del contatto cliccato dall'utente
+        currentContact() {
+            return this.contacts.find((contact) => contact.id === this.currentId)
+        },
+    },
+
+    // # Funzioni
+
+
+
 })
 
 myApp.mount('#root');
