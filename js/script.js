@@ -11,21 +11,22 @@ const myApp = createApp({
     data: () => ({
         user,
         contacts,
-        currentId: 1,
+        currentId: 1
     }),
-
     computed: {
-
-        // # Recupero l'id del contatto cliccato dall'utente
-        currentContact() {
-            return this.contacts.find((contact) => contact.id === this.currentId)
-        },
+        // # Recupero il contatto cliccato dall'utente perchè è qualcosa che cambia in tempo reale. Se ho il contatto, posso accedere quindi a foto, nome ecc...
+        activeContact() {
+            return this.contacts.find(contact => contact.id === this.currentId)
+        }
     },
 
-    // # Funzioni
-
-
-
+    methods: {
+        // # Funzione per ottenere l'id dell'utente cliccato.
+        // # Il parametro è l'id dell'utente cliccato '(contact.id)'
+        setCurrentId(id) {
+            return this.currentId = id;
+        }
+    }
 })
 
 myApp.mount('#root');

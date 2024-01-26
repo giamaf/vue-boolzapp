@@ -110,8 +110,8 @@
                     </section>
 
                     <!-- Chat-list section-->
-                    <section class="chat-list py-2 pe-2 h-100">
-                        <div v-for="contact in contacts" :key="contact.id" @click="currentId = contact.id"
+                    <section class="chat-list py-2 h-100">
+                        <div v-for="(contact,i) in contacts" :key="contact.id" @click="setCurrentId(contact.id)"
                             class="container d-flex align-items-center justify-content-between gap-3 mb-2 py-2">
                             <div class="left flex-shrink-0">
                                 <a href="#"> <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name"></a>
@@ -145,10 +145,11 @@
                                 <div class="nav-left flex-grow-1">
                                     <ul class="d-flex align-items-center gap-1">
                                         <li>
-                                            <a href="#"><img src="" class="rounded-circle" alt=""></a>
+                                            <a href="#"><img :src="`img/avatar${activeContact.avatar}.jpg`"
+                                                    class="rounded-circle" :alt="activeContact.name"></a>
                                         </li>
                                         <li>
-                                            <h6><small>{{currentId}}</small>
+                                            <h6><small>{{activeContact.name}}</small>
                                             </h6>
                                             <p><small class="fw-light">Ultimo accesso alle</small></p>
                                         </li>
@@ -162,7 +163,7 @@
                                                     class="fa-solid fa-magnifying-glass"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#"><i class="bi bi-three-dots-vertical"></i></a>
+                                            <a href=""><i class="bi bi-three-dots-vertical"></i></a>
                                         </li>
                                     </ul>
                                 </div>
