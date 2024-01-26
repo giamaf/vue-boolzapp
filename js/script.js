@@ -62,7 +62,9 @@ const myApp = createApp({
                 status: 'sent'
             }
 
-            //* Inserisco il nuovo oggetto messaggio nell'array della chat
+            //* Inserisco il nuovo oggetto messaggio nell'array della chat se c'è testo nell'input
+            if (!this.newMessageText) return
+
             this.contactChat.push(newMessage);
 
             //* Ripulisco il campo input dopo il'invio
