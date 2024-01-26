@@ -172,31 +172,18 @@
                             <!!-- Chat-box section -->
                                 <section class="chat-box">
                                     <ul>
-                                        <li class="text-start mb-3">
-                                            <span role="button" class="message received d-inline-block">Ciao
-                                                <span class="tail received"></span>
+                                        <!-- Utilizzo il ternario per smistare i messaggi -->
+                                        <!-- Se il messaggio ha uno stato ricevuto applico la classe text-start e received, altrimenti se inviato applico text-end e send-->
+                                        <li v-for="message in contactChat" :key="message.id" class="mb-3"
+                                            :class="message.status === 'received' ? 'text-start': 'text-end'">
+                                            <span role="button" class="message d-inline-block"
+                                                :class="message.status === 'received' ? 'received': 'send'">{{message.text}}
+                                                <span class="tail"
+                                                    :class="message.status === 'received' ? 'received': 'send'"></span>
+                                                <p class="date">{{message.date}}</p>
                                             </span>
                                         </li>
-                                        <li class="text-end mb-3">
-                                            <span role="button" class="text-start message send d-inline-block">Lorem
-                                                ipsum
-                                                dolor sit amet,
-                                                consectetur adipisicing elit. Quod molestiae nihil velit odio facilis?
-                                                Provident quas natus ab, nam consectetur laudantium vitae, minus
-                                                voluptatem perferendis quo nobis suscipit hic itaque?
-                                                <span class="tail send"></span>
-                                            </span>
 
-                                        </li>
-                                        <li class="text-start mb-3">
-                                            <span role="button" class="message received d-inline-block">Lorem ipsum
-                                                dolor sit amet,
-                                                consectetur adipisicing elit. Quod molestiae nihil velit odio facilis?
-                                                Provident quas natus ab, nam consectetur laudantium vitae, minus
-                                                voluptatem perferendis quo nobis suscipit hic itaque?
-                                                <span class="tail received"></span>
-                                            </span>
-                                        </li>
                                     </ul>
 
                                 </section>
