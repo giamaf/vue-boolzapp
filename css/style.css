@@ -216,10 +216,6 @@ section.chat-list div:hover {
     filter: contrast(0);
 }
 
-section.chat-list div:hover {
-    filter: brightness(0.8);
-    cursor: pointer;
-}
 
 section.notifications-alert a .fa-xmark:hover {
     filter: contrast(0);
@@ -227,4 +223,10 @@ section.notifications-alert a .fa-xmark:hover {
 
 section.notifications-alert a .fa-bell-slash:hover {
     filter: invert(1);
+}
+
+section.chat-list div:hover {
+    background-color: lightgray;
+    filter: opacity(1);
+    cursor: pointer;
 }
