@@ -202,7 +202,8 @@
                                         </div>
                                         <div class="center flex-grow-1 mx-3">
                                             <form class="form-message" role="search">
-                                                <input v-model.trim="newMessageText" @keyup.enter="sendMessage"
+                                                <input v-model.trim="newMessageText"
+                                                    @keyup.enter="sendMessage(setTimeout)" autofocus
                                                     class="form-control" type="search"
                                                     placeholder="Scrivi un messaggio">
                                             </form>

@@ -46,7 +46,26 @@ const myApp = createApp({
                 text: this.newMessageText,
                 status: 'sent'
             }
+
+            //* Inserisco il nuovo oggetto messaggio nell'array della chat
             this.contactChat.push(newMessage);
+
+            //* Ripulisco il campo input dopo il'invio
+            this.newMessageText = '';
+
+            //* Dopo 1 secondo arriva la risposta Ok al messaggio inviato
+            setTimeout(() => {
+                const replyMessage = {
+                    id: new Date().toISOString(),
+                    date: this.getNowDate(),
+                    text: 'Ok',
+                    status: 'received'
+                }
+
+                //* Inserisco il nuovo oggetto messaggio nell'array della chat
+                this.contactChat.push(replyMessage);
+            }, 1000)
+
         }
     }
 })
