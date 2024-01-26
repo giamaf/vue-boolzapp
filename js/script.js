@@ -11,7 +11,8 @@ const myApp = createApp({
     data: () => ({
         user,
         contacts,
-        currentId: 1
+        currentId: 1,
+        newMessageText: ''
     }),
     computed: {
         // # Recupero il contatto cliccato dall'utente perchè è qualcosa che cambia in tempo reale. Se ho il contatto, posso accedere quindi a foto, nome ecc...
@@ -31,6 +32,22 @@ const myApp = createApp({
         setCurrentId(id) {
             return this.currentId = id;
         },
+
+        // # Funzione per creare una data
+        getNowDate() {
+            return `${new Date().toLocaleDateString()}  ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
+        },
+
+        // # Funzione per inviare un nuovo messaggio
+        sendMessage() {
+            const newMessage = {
+                id: new Date().toISOString(),
+                date: this.getNowDate(),
+                text: this.newMessageText,
+                status: 'sent'
+            }
+            this.contactChat.push(newMessage);
+        }
     }
 })
 
