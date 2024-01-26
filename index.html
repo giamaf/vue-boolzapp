@@ -81,9 +81,9 @@
                     <div class="container">
 
                         <section class="search d-flex align-items-center my-2 gap-2">
-                            <form class="form-search" role="search">
+                            <form @submit.prevent class="form-search" role="search">
                                 <i class="fa-solid fa-magnifying-glass my-position"></i>
-                                <input class="bg-color-grey form-control" type="search"
+                                <input v-model="searchedText" class="bg-color-grey form-control" type="search"
                                     placeholder="Cerca o inzia una nuova chat">
                             </form>
                             <a href="#"><i class="bi bi-filter"></i></a>
@@ -111,9 +111,9 @@
 
                     <!-- Chat-list section-->
                     <section class="chat-list py-2 h-100">
-                        <div v-for="(contact,i) in contacts" :key="contact.id" @click="setCurrentId(contact.id)"
+                        <div v-for="contact, in filteredContacts" :key="contact.id" @click="setCurrentId(contact.id)"
                             class="container d-flex align-items-center justify-content-between gap-3 mb-2 py-2">
-                            <div class="left flex-shrink-0">
+                            <div class="left">
                                 <a href="#"> <img :src="`img/avatar${contact.avatar}.jpg`" :alt="contact.name"></a>
                             </div>
                             <div class="center flex-grow-1">
@@ -121,14 +121,16 @@
                                 <p><small>Messaggio</small>
                                 </p>
                             </div>
-                            <div class="right flex-shrink-0">
+                            <div class="right">
                                 <ul class="d-flex flex-column align-items-center">
                                     <li>
-                                        <p class="data-style"><small>Data</small></p>
+                                        <p class="data-style">
+                                            <small>Ieri</small>
+                                        </p>
                                     </li>
-                                    <li>
+                                    <li class="d-flex justify-content-center">
                                         <p class="d-flex justify-content-center align-items-center message-number m-0">
-                                            <a href="#">7</a>
+                                            <a href="#">350</a>
                                         </p>
                                     </li>
                                 </ul>
@@ -151,7 +153,8 @@
                                         <li>
                                             <h6><small>{{activeContact.name}}</small>
                                             </h6>
-                                            <p><small class="fw-light">Ultimo accesso alle</small></p>
+                                            <p><small class="fw-light">Ultimo accesso alle {{getHourMinute()}}</small>
+                                            </p>
                                         </li>
                                     </ul>
                                     </a>
@@ -201,10 +204,9 @@
                                             </ul>
                                         </div>
                                         <div class="center flex-grow-1 mx-3">
-                                            <form class="form-message" role="search">
-                                                <input v-model.trim="newMessageText"
-                                                    @keyup.enter="sendMessage(setTimeout)" autofocus
-                                                    class="form-control" type="search"
+                                            <form @submit.prevent class="form-message" role="search">
+                                                <input v-model.trim="newMessageText" @keyup.enter="sendMessage"
+                                                    autofocus class="form-control" type="search"
                                                     placeholder="Scrivi un messaggio">
                                             </form>
                                         </div>

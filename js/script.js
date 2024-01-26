@@ -12,8 +12,10 @@ const myApp = createApp({
         user,
         contacts,
         currentId: 1,
-        newMessageText: ''
+        newMessageText: '',
+        searchedText: '',
     }),
+
     computed: {
         // # Recupero il contatto cliccato dall'utente perchè è qualcosa che cambia in tempo reale. Se ho il contatto, posso accedere quindi a foto, nome ecc...
         activeContact() {
@@ -23,6 +25,14 @@ const myApp = createApp({
         // # Recupero la chat dei vari contatti 
         contactChat() {
             return this.activeContact.messages
+        },
+
+        // # Funzione per filtrare la lista contatti
+        filteredContacts() {
+            const searchedText = this.searchedText.toLowerCase();
+            const filteredArray = this.contacts.filter(contact => contact.name.toLowerCase().includes(searchedText));
+
+            return filteredArray;
         }
     },
 
@@ -33,9 +43,14 @@ const myApp = createApp({
             return this.currentId = id;
         },
 
-        // # Funzione per creare una data
+        // # Funzione per creare una data gg/mm/aaaa hrs:min:sec
         getNowDate() {
             return `${new Date().toLocaleDateString()}  ${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
+        },
+
+        // # Funzione per creare un orario hrs:min
+        getHourMinute() {
+            return `${new Date().getHours()}:${new Date().getMinutes()}`
         },
 
         // # Funzione per inviare un nuovo messaggio
@@ -64,9 +79,9 @@ const myApp = createApp({
 
                 //* Inserisco il nuovo oggetto messaggio nell'array della chat
                 this.contactChat.push(replyMessage);
-            }, 1000)
 
-        }
+            }, 1000)
+        },
     }
 })
 
